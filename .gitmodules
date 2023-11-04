@@ -1,6 +1,3 @@
-[submodule "themes/lowkey"]
-	path = themes/lowkey
-	url = https://github.com/nixentric/Lowkey-Hugo-Theme.git
 [submodule "themes/Lowkey-Hugo-Theme"]
 	path = themes/Lowkey-Hugo-Theme
 	url = https://github.com/multi-vac/Lowkey-Hugo-Theme
