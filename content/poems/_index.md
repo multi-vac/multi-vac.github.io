@@ -1,4 +1,5 @@
 ---
 title: "Poems"
+expand: true
 ---
-Poems I write sometimes
+Some of the poems I've written to express what I feel like sometimes.
