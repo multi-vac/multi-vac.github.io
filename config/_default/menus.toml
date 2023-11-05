@@ -53,6 +53,11 @@
 [[social]]
     identifier = "twitter"
     name = "Twitter"
-    url = "https://twitter.com/multi_vac_"
+    url = "https://twitter.com/multi_vac_/"
     weight = 2
 
+[[social]]
+    identifier = "goodreads"
+    name = "Goodreads"
+    url = "https://www.goodreads.com/user/show/59893490-ankit/"
+    weight = 3
