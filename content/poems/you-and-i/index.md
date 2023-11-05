@@ -4,7 +4,6 @@ title:      You and I
 date:       2023-04-09 04:39:19
 draft: false
 categories:
-- poems
 ---
 
 a cool breeze\

@@ -4,7 +4,6 @@ title:      Loss
 date:       2022-07-16 00:00:00
 summary:    
 categories:
-- poems
 ---
 
 hiking on a mountain\
@@ -82,8 +81,9 @@ and hold you close\
 till i become a dream myself\
 on that beach\
 shrouded in the red\
-of the dusk\
+of the dusk
 
+---
 
 {{< img src="loss_1.jpg" alt="Mighty Beas" position="center" >}}
 

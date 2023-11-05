@@ -4,7 +4,6 @@ title:      Intrigue
 date:       2022-07-27 00:00:00
 summary:    
 categories:
-- poems
 ---
 
 i was intrigued\
