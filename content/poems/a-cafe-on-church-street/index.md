@@ -4,7 +4,6 @@ title:      A Cafe on Church Street
 date:       2022-06-26 12:31:19
 summary:    
 categories:
-- poems
 ---
 
 there she was\

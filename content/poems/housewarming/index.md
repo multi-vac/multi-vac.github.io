@@ -4,7 +4,6 @@ title:      Housewarming
 date:       2022-06-27 12:32:18
 summary:    
 categories:
-- poems
 ---
 
 it's 3am on a quiet residential street\

@@ -4,7 +4,6 @@ title:      Love, Requited
 date:       2022-08-18 01:39:19
 summary:    
 categories:
-- poems
 ---
 
 a feeble orange light\

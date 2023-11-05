@@ -4,7 +4,6 @@ title: Calm
 date: 2022-06-16 19:22:19
 summary:
 categories:
-- poems
 ---
 
 we talked about the world ruined\

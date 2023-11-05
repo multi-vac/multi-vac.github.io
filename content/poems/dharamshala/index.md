@@ -4,7 +4,6 @@ title:      Dharamshala
 date:       2022-06-23 15:31:19
 summary:    
 categories:
-- poems
 ---
 
 end of a warm day in upper Dharamshala\

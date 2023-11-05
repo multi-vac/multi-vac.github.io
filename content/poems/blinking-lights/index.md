@@ -4,7 +4,6 @@ title:      Blinking Lights
 date:       2022-07-02 11:21:29
 summary:    
 categories:
-- poems
 ---
 
 a cloudy night\
