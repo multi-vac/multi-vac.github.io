@@ -6,4 +6,4 @@ I’m Ankit—or multi-vac, or simply, multi. The pseudonym comes from [The Last
 
 I'm a full-stack developer and a team lead at [BriteCore](https://britecore.com).
 
-When I'm not working I like to [read](https://www.goodreads.com/user/show/59893490-ankit/) and [write]({{< ref "/poems" >}}).
+When I'm not working I like to [read]({{< ref "/now-reading" >}}), [write]({{< ref "/poems" >}}), and think about [paperclips](https://www.lesswrong.com/tag/squiggle-maximizer-formerly-paperclip-maximizer).
