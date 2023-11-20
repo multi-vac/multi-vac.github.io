@@ -3,7 +3,8 @@ title: "Now Reading"
 draft: false
 ---
 \
-Fyodor Dostoevsky, _The Brothers Karamazov_
+Fyodor Dostoevsky, _The Brothers Karamazov_\
+René Girard, _I See Satan Fall Like Lightning_
 \
 \
 **Recently Finished**
