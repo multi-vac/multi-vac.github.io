@@ -3,11 +3,12 @@ title: "Now Reading"
 draft: false
 ---
 \
-Fyodor Dostoevsky, _The Brothers Karamazov_\
 René Girard, _I See Satan Fall Like Lightning_
 \
 \
 **Recently Finished**
+- Cormac McCarthy, _The Passenger / Stella Maris_
+- Fyodor Dostoevsky, _The Brothers Karamazov_
 - Cormac McCarthy, _Blood Meridian, or, the Evening Redness in the West_
 - Cormac McCarthy, _No Country for Old Men_
 - Roberto Bolaño, _2666_
