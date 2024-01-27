@@ -3,10 +3,11 @@ title: "Now Reading"
 draft: false
 ---
 \
-René Girard, _I See Satan Fall Like Lightning_
+Milton Friedman, _Capitalism and Freedom_
 \
 \
 **Recently Finished**
+- René Girard, _I See Satan Fall Like Lightning_
 - Cormac McCarthy, _The Passenger / Stella Maris_
 - Fyodor Dostoevsky, _The Brothers Karamazov_
 - Cormac McCarthy, _Blood Meridian, or, the Evening Redness in the West_
