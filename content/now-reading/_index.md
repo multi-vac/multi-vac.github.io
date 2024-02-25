@@ -3,10 +3,12 @@ title: "Now Reading"
 draft: false
 ---
 \
-Milton Friedman, _Capitalism and Freedom_
+Mikhail Bulgakov, _The Master and Margarita_
 \
 \
 **Recently Finished**
+- Henry Hazlitt, _Economics in One Lesson_
+- Milton Friedman, _Capitalism and Freedom_
 - René Girard, _I See Satan Fall Like Lightning_
 - Cormac McCarthy, _The Passenger / Stella Maris_
 - Fyodor Dostoevsky, _The Brothers Karamazov_
