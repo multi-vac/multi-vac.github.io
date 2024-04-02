@@ -3,10 +3,13 @@ title: "Now Reading"
 draft: false
 ---
 \
-Mikhail Bulgakov, _The Master and Margarita_
+Walter Isaacson, _The Code Breaker_
 \
 \
 **Recently Finished**
+- Eric Puchner, _Music Through the Floor_
+- Ray Bradbury, _Zen in the Art of Writing_
+- Mikhail Bulgakov, _The Master and Margarita_
 - Henry Hazlitt, _Economics in One Lesson_
 - Milton Friedman, _Capitalism and Freedom_
 - René Girard, _I See Satan Fall Like Lightning_
