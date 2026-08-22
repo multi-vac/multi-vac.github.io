@@ -97,7 +97,6 @@
     return e;
   }
   function rnd(a, b) { return a + Math.random() * (b - a); }
-  function pick(arr) { return arr[Math.floor(Math.random() * arr.length)]; }
 
   // --- chance is the true artist: a different construction every visit ---
   var cx = rnd(132, 168), cy = rnd(205, 250), R = rnd(88, 118);
@@ -111,22 +110,33 @@
     pts.push({ x: cx + R * Math.cos(a), y: cy + R * Math.sin(a) });
   }
 
-  // straightedge lines through pairs of points, run off past the edges
-  var steps = [2, 2, 3, Math.max(2, n - 2)], used = {};
-  var nLines = Math.round(rnd(4, 6));
-  for (var k = 0; k < nLines; k++) {
-    var i0 = Math.floor(rnd(0, n)), st = pick(steps), i1 = (i0 + st) % n;
-    var key = Math.min(i0, i1) + '-' + Math.max(i0, i1);
-    if (i0 === i1 || used[key]) { k--; continue; }
-    used[key] = 1;
-    var p = pts[i0], q = pts[i1];
+  // straightedge lines through pairs of points, run off past the edges.
+  // enumerate every distinct pair the allowed steps can reach, then draw a
+  // shuffled subset -- never more than exist, so there is nothing to retry
+  var steps = [2, 2, 3, Math.max(2, n - 2)], seen = {}, pairs = [];
+  steps.forEach(function (st) {
+    for (var i = 0; i < n; i++) {
+      var j = (i + st) % n;
+      if (i === j) continue;
+      var key = Math.min(i, j) + '-' + Math.max(i, j);
+      if (seen[key]) continue;
+      seen[key] = 1;
+      pairs.push([i, j]);
+    }
+  });
+
+  var nLines = Math.min(Math.round(rnd(4, 6)), pairs.length);
+  pairs.sort(function () { return Math.random() - .5; })
+       .slice(0, nLines)
+       .forEach(function (pr) {
+    var p = pts[pr[0]], q = pts[pr[1]];
     var dx = q.x - p.x, dy = q.y - p.y, m = Math.hypot(dx, dy) || 1;
     dx /= m; dy /= m;
     strokes.push(el('line', {
       x1: (p.x - dx * 700).toFixed(1), y1: (p.y - dy * 700).toFixed(1),
       x2: (p.x + dx * 700).toFixed(1), y2: (p.y + dy * 700).toFixed(1)
     }));
-  }
+  });
 
 
   strokes.forEach(function (e) { geo.appendChild(e); });
