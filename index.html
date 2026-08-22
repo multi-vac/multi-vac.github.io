@@ -111,22 +111,9 @@
     pts.push({ x: cx + R * Math.cos(a), y: cy + R * Math.sin(a) });
   }
 
-  // compass arcs swung from three of the points, at the same radius
-  var order = pts.map(function (_, i) { return i; }).sort(function () { return Math.random() - .5; });
-  order.slice(0, 3).forEach(function (i) {
-    var p = pts[i];
-    var base = Math.atan2(cy - p.y, cx - p.x), span = rnd(1.6, 2.6);
-    var a1 = base - span / 2, a2 = base + span / 2;
-    strokes.push(el('path', {
-      d: 'M' + (p.x + R * Math.cos(a1)).toFixed(1) + ' ' + (p.y + R * Math.sin(a1)).toFixed(1) +
-         'A' + R.toFixed(1) + ' ' + R.toFixed(1) + ' 0 0 1 ' +
-         (p.x + R * Math.cos(a2)).toFixed(1) + ' ' + (p.y + R * Math.sin(a2)).toFixed(1)
-    }));
-  });
-
   // straightedge lines through pairs of points, run off past the edges
   var steps = [2, 2, 3, Math.max(2, n - 2)], used = {};
-  var nLines = Math.round(rnd(3, 4));
+  var nLines = Math.round(rnd(4, 6));
   for (var k = 0; k < nLines; k++) {
     var i0 = Math.floor(rnd(0, n)), st = pick(steps), i1 = (i0 + st) % n;
     var key = Math.min(i0, i1) + '-' + Math.max(i0, i1);
