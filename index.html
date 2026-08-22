@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>nikat.dev</title>
+<meta name="description" content="In progress.">
+<style>
+  :root {
+    --paper: #ffffff;
+    --ink:   #1b1a17;
+    --plate: min(370px, 41vw, 48vh);
+    --photo: min(318px, 35vw, 41vh);
+  }
+
+  * { box-sizing: border-box; }
+
+  html, body { height: 100%; margin: 0; }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: "Times New Roman", Times, Georgia, serif;
+    display: grid;
+    place-items: center;
+    padding: 1.5rem;
+  }
+
+  figure { margin: 0; text-align: center; }
+
+  .spread {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 54px;
+  }
+
+  .plate {
+    display: block;
+    width: var(--plate);
+    height: auto;
+  }
+
+  img.plate {
+    width: var(--photo);
+    filter: grayscale(1) contrast(1.04);
+    transition: opacity .25s ease;
+  }
+
+  a.source { display: block; line-height: 0; }
+  a.source:hover img.plate { opacity: .82; }
+
+  #geo {
+    fill: none;
+    stroke: var(--ink);
+    stroke-width: .8;
+  }
+
+  #geo line { stroke-width: .6; opacity: .72; }
+
+  figcaption {
+    margin-top: 2.1rem;
+    font-style: italic;
+    font-size: 1.05rem;
+  }
+
+  @media (max-width: 760px) {
+    .spread { flex-direction: column; align-items: center; gap: 30px; }
+    .plate { width: min(340px, 80vw); }
+    img.plate { width: min(292px, 69vw); }
+  }
+</style>
+</head>
+<body>
+  <figure>
+    <div class="spread">
+      <svg class="plate" viewBox="0 0 300 454" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <g id="geo"></g>
+      </svg>
+      <a class="source" href="https://www.toutfait.com/unmaking_the_museum/Unhappy%20Readymade.html"
+         target="_blank" rel="noopener noreferrer">
+        <img class="plate" src="img/unhappy-valise.jpg"
+             alt="Marcel Duchamp, Unhappy Readymade — the Box in a Valise version">
+      </a>
+    </div>
+    <figcaption>in progress</figcaption>
+  </figure>
+
+<script>
+(function () {
+  var NS = 'http://www.w3.org/2000/svg';
+  var geo = document.getElementById('geo');
+
+  function el(name, attrs) {
+    var e = document.createElementNS(NS, name);
+    for (var k in attrs) e.setAttribute(k, attrs[k]);
+    return e;
+  }
+  function rnd(a, b) { return a + Math.random() * (b - a); }
+  function pick(arr) { return arr[Math.floor(Math.random() * arr.length)]; }
+
+  // --- chance is the true artist: a different construction every visit ---
+  var cx = rnd(132, 168), cy = rnd(205, 250), R = rnd(88, 118);
+  var strokes = [];
+
+  strokes.push(el('circle', { cx: cx, cy: cy, r: R }));
+
+  var n = Math.round(rnd(5, 7)), phase = rnd(0, Math.PI * 2), pts = [];
+  for (var i = 0; i < n; i++) {
+    var a = phase + i * 2 * Math.PI / n;
+    pts.push({ x: cx + R * Math.cos(a), y: cy + R * Math.sin(a) });
+  }
+
+  // compass arcs swung from three of the points, at the same radius
+  var order = pts.map(function (_, i) { return i; }).sort(function () { return Math.random() - .5; });
+  order.slice(0, 3).forEach(function (i) {
+    var p = pts[i];
+    var base = Math.atan2(cy - p.y, cx - p.x), span = rnd(1.6, 2.6);
+    var a1 = base - span / 2, a2 = base + span / 2;
+    strokes.push(el('path', {
+      d: 'M' + (p.x + R * Math.cos(a1)).toFixed(1) + ' ' + (p.y + R * Math.sin(a1)).toFixed(1) +
+         'A' + R.toFixed(1) + ' ' + R.toFixed(1) + ' 0 0 1 ' +
+         (p.x + R * Math.cos(a2)).toFixed(1) + ' ' + (p.y + R * Math.sin(a2)).toFixed(1)
+    }));
+  });
+
+  // straightedge lines through pairs of points, run off past the edges
+  var steps = [2, 2, 3, Math.max(2, n - 2)], used = {};
+  var nLines = Math.round(rnd(3, 4));
+  for (var k = 0; k < nLines; k++) {
+    var i0 = Math.floor(rnd(0, n)), st = pick(steps), i1 = (i0 + st) % n;
+    var key = Math.min(i0, i1) + '-' + Math.max(i0, i1);
+    if (i0 === i1 || used[key]) { k--; continue; }
+    used[key] = 1;
+    var p = pts[i0], q = pts[i1];
+    var dx = q.x - p.x, dy = q.y - p.y, m = Math.hypot(dx, dy) || 1;
+    dx /= m; dy /= m;
+    strokes.push(el('line', {
+      x1: (p.x - dx * 700).toFixed(1), y1: (p.y - dy * 700).toFixed(1),
+      x2: (p.x + dx * 700).toFixed(1), y2: (p.y + dy * 700).toFixed(1)
+    }));
+  }
+
+
+  strokes.forEach(function (e) { geo.appendChild(e); });
+
+  // --- drawn the way a proof is drawn: one instrument at a time ---
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  var SPEED = 340, delay = 0;
+  strokes.forEach(function (e) {
+    var len = e.getTotalLength(), dur = len / SPEED;
+    e.style.strokeDasharray = len;
+    e.style.strokeDashoffset = len;
+    e.style.transition = 'stroke-dashoffset ' + dur.toFixed(2) + 's cubic-bezier(.5,0,.5,1) ' + delay.toFixed(2) + 's';
+    delay += dur * 0.52;
+  });
+
+  requestAnimationFrame(function () {
+    requestAnimationFrame(function () {
+      strokes.forEach(function (e) { e.style.strokeDashoffset = 0; });
+    });
+  });
+})();
+</script>
+</body>
+</html>
